@@ -9,7 +9,7 @@ const filterOption = document.querySelector('.filter-todo');
 
 todoButton.addEventListener('click', addToDo);
 todoList.addEventListener('click', deleteCheck);
-filterOption.addEventListener('click', filterToDo);
+filterOption.addEventListener('click', filterTodo);
 
 // functions
 
@@ -58,19 +58,27 @@ function deleteCheck(e) {
    }
 }
 
-function filterToDo(e) {
+function filterTodo(e) {
    const todos = todoList.childNodes;
    todos.forEach(function (todo) {
       switch (e.target.value) {
-         case 'all':
-            todo.style.display = 'flex';
+         case "all":
+            todo.style.display = "flex";
             break;
-         case 'completed':
+         case "completed":
             if (todo.classList.contains('completed')) {
-               todo.style.display = 'flex';
+               todo.style.display = "flex";
             } else {
-               todo.style.display = 'none';
+               todo.style.display = "none";
             }
+            break;
+         case "incomplete":
+            if (!todo.classList.contains("completed")) {
+               todo.style.display = "flex";
+            } else {
+               todo.style.display = "none";
+            }
+            break;
       }
    });
 }
