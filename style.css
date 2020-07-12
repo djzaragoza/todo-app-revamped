@@ -80,3 +80,16 @@ form button:hover {
     background: limegreen;
  }
 
+.todo-item {
+   padding: 0rem 1.5rem;
+}
+
+.fa-trash, .fa-check {
+   pointer-events: none;
+}
+
+.completed {
+   text-decoration: line-through;
+   opacity: .4;
+}
+
