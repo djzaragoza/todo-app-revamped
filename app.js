@@ -6,7 +6,7 @@ const filterOption = document.querySelector('.filter-todo');
 
 
 // event listeners
-document.addEventListener("DOMContentLoaded", getTodos);
+// document.addEventListener("DOMContentLoaded", getTodos);
 todoButton.addEventListener('click', addToDo);
 todoList.addEventListener('click', deleteCheck);
 filterOption.addEventListener('click', filterTodo);
@@ -83,6 +83,19 @@ function filterTodo(e) {
             break;
       }
    });
+}
+
+function saveLocalTodos(todo) {
+   // check -- hey do i already have everything in there?
+   let todos;
+   if (localStorage.getItem('todos') === null) {
+      todos = [];
+   } else {
+      todos = JSON.parse(localStorage.getItem('todos'));
+   }
+
+   todos.push(todo);
+   localStorage.setItem('todos', JSON.stringify(todos));
 }
 
 function getTodos() {
