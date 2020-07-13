@@ -6,7 +6,7 @@ const filterOption = document.querySelector('.filter-todo');
 
 
 // event listeners
-// document.addEventListener("DOMContentLoaded", getTodos);
+document.addEventListener("DOMContentLoaded", getTodos);
 todoButton.addEventListener('click', addToDo);
 todoList.addEventListener('click', deleteCheck);
 filterOption.addEventListener('click', filterTodo);
@@ -49,6 +49,7 @@ function deleteCheck(e) {
       const todo = item.parentElement;
       // animation added
       todo.classList.add('fall');
+      removeLocalTodos(todo);
       todo.addEventListener('transitionend', function () {
          todo.remove();
       });
@@ -129,3 +130,17 @@ function getTodos() {
       todoList.appendChild(todoDiv);
    });
 }
+
+function removeLocalTodos(todo) {
+   // check -- hey do i already have everything in there?
+   let todos;
+   if (localStorage.getItem('todos') === null) {
+      todos = [];
+   } else {
+      todos = JSON.parse(localStorage.getItem('todos'));
+   }
+   const todoIndex = todo.children[0].innerText;
+   todos.splice(todos.indexOf(todoIndex), 1);
+   localStorage.setItem('todos', JSON.stringify(todos));
+}
+
