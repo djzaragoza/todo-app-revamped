@@ -125,7 +125,7 @@ select {
 .select::after {
    content: "\25BC";
    position: absolute;
-   background: lightgray;
+   background: darkgrey;
    top: 0;
    right: 0;
    padding: 1rem;
@@ -134,7 +134,18 @@ select {
 }
 
 .select:hover::after {
-   background: darkgray;
+   background: whitesmoke;
    color: black;
+}
+
+.footer {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+}
+
+.footer p {
+   margin-top: 10px;
 }
 
